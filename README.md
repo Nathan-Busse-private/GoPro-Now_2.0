@@ -1,3 +1,5 @@
+
+```markdown
 # Ultra Low Latency NGINX RTMP Server for GoPro HERO11 BLACK
 
 This tutorial provides step-by-step instructions to set up an ultra-low latency NGINX RTMP server on a Linux Mint system, and includes steps to ensure the server is functioning correctly after a power interruption.
@@ -95,7 +97,7 @@ This tutorial provides step-by-step instructions to set up an ultra-low latency 
 1. Check if NGINX is running:
 
     ```bash
-    sudo systemctl status nginx
+    ps aux | grep nginx
     ```
 
 2. Review NGINX logs for any issues:
@@ -110,12 +112,6 @@ This tutorial provides step-by-step instructions to set up an ultra-low latency 
     sudo /usr/local/nginx/sbin/nginx -t
     ```
 
-4. Restart NGINX:
-
-    ```bash
-    sudo systemctl restart nginx
-    ```
-
 ## Step 5: Ensure NGINX Functionality After Power Interruption
 
 In case of a power interruption, follow these steps to check and ensure NGINX functionality:
@@ -123,7 +119,7 @@ In case of a power interruption, follow these steps to check and ensure NGINX fu
 1. **Check NGINX Status**:
 
     ```bash
-    sudo systemctl status nginx
+    ps aux | grep nginx
     ```
 
 2. **Review NGINX Logs**:
@@ -141,7 +137,7 @@ In case of a power interruption, follow these steps to check and ensure NGINX fu
 4. **Restart NGINX**:
 
     ```bash
-    sudo systemctl restart nginx
+    sudo /usr/local/nginx/sbin/nginx -s reload
     ```
 
 5. **Check System Logs**:
@@ -172,3 +168,75 @@ In case of a power interruption, follow these steps to check and ensure NGINX fu
         ```
 
 By following these steps, you can determine if the power interruption caused any issues with NGINX and take the necessary actions to resolve them.
+
+## Stopping the NGINX Server
+
+To stop the NGINX server, follow these steps:
+
+1. **Stop NGINX using the NGINX binary**:
+   If you manually installed NGINX, use this command:
+
+   ```bash
+   sudo /usr/local/nginx/sbin/nginx -s stop
+   ```
+
+2. **Terminate NGINX Processes**:
+   If the above method does not work, you can manually terminate the NGINX processes:
+
+   ```bash
+   sudo killall nginx
+   ```
+
+   Or, find and kill the processes by their PID:
+
+   ```bash
+   ps aux | grep nginx
+   sudo kill -QUIT <PID>
+   ```
+
+   Replace `<PID>` with the actual process ID of the NGINX process you want to terminate.
+
+## Checking NGINX Status
+
+To check the status of the NGINX server, follow these steps:
+
+1. **Check if NGINX is running**:
+
+    ```bash
+    ps aux | grep nginx
+    ```
+
+2. **Review NGINX Logs**:
+   Check the NGINX logs for any issues:
+
+    ```bash
+    sudo tail -n 50 /usr/local/nginx/logs/error.log
+    ```
+
+3. **Test NGINX Configuration**:
+   Test the NGINX configuration to ensure there are no syntax errors:
+
+    ```bash
+    sudo /usr/local/nginx/sbin/nginx -t
+    ```
+
+4. **Check System Logs**:
+   Check the system logs for any related errors or warnings:
+
+    ```bash
+    sudo journalctl -xe
+    ```
+```
+
+To create the `README.md` file:
+
+1. Open a terminal.
+2. Navigate to the directory where you want to create the file.
+3. Use a text editor to create and edit the file. For example, using `nano`:
+
+    ```bash
+    nano README.md
+    ```
+
+4. Paste the content into the editor.
+5. Save and close the editor (in `nano`, press `CTRL+O` to save and `CTRL+X` to exit).
