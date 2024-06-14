@@ -227,16 +227,3 @@ To check the status of the NGINX server, follow these steps:
     sudo journalctl -xe
     ```
 ```
-
-To create the `README.md` file:
-
-1. Open a terminal.
-2. Navigate to the directory where you want to create the file.
-3. Use a text editor to create and edit the file. For example, using `nano`:
-
-    ```bash
-    nano README.md
-    ```
-
-4. Paste the content into the editor.
-5. Save and close the editor (in `nano`, press `CTRL+O` to save and `CTRL+X` to exit).
