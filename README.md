@@ -226,4 +226,4 @@ To check the status of the NGINX server, follow these steps:
     ```bash
     sudo journalctl -xe
     ```
-```
+
